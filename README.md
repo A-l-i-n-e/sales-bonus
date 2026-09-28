@@ -1,4 +1,4 @@
-(https://github.com/A-l-i-n-e/sales-bonus)
+https://github.com/A-l-i-n-e/sales-bonus
 # Проектная работа "Пряники"
 5 спринт, модуль JS
 
