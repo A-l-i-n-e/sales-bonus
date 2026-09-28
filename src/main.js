@@ -60,7 +60,9 @@ function analyzeSalesData(data, options) {
         data.products.length === 0 ||
         data.purchase_records.length === 0
     ) {
-        throw new Error("Некорректные вхыодные данные");
+        if (!options || typeof options !== 'object'){
+            throw new Error("Некорректные вхыодные данные");
+        }
     }
     // @TODO: Проверка наличия опций
     const { calculateRevenue, calculateBonus } = options;
@@ -88,7 +90,7 @@ function analyzeSalesData(data, options) {
         return acc;
     }, {});
 
-    const productIndex = Object.fromEntres(
+    const productIndex = Object.fromEntries(
         data.products.map((product) => [product.sku, product]),
     );
 
