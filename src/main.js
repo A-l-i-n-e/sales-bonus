@@ -30,10 +30,10 @@ function calculateBonusByProfit(index, total, seller) {
     let bonusPercent;
     if (ratingPosition === 1 ) {
         bonusPercent = 15; // за 1 место
-    } else if (ratingPosition === 2 || ratingPosition === 3) {
-        bonusPercent = 10; // за 2 или 3 место
     } else if (ratingPosition === total) {
         bonusPercent = 0; // за последнее место
+    } else if (ratingPosition === 2 || ratingPosition === 3) {
+        bonusPercent = 10; // за 2 или 3 место
     } else {
         bonusPercent = 5; // все остальное
     }
@@ -60,11 +60,13 @@ function analyzeSalesData(data, options) {
         data.products.length === 0 ||
         data.purchase_records.length === 0
     ) {
-        if (!options || typeof options !== 'object'){
-            throw new Error("Некорректные вхыодные данные");
-        }
+        throw new Error("Некорректные вхыодные данные");
     }
     // @TODO: Проверка наличия опций
+    if (!options || typeof options !== 'object'){
+        throw new Error("Некорректные опции");
+    }
+
     const { calculateRevenue, calculateBonus } = options;
 
     if (
